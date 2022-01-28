@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello!{% endblock %}
+
+{% block body %}
+    <h1>{{product.name}}</h1>
+    <p>Description : {{product.description}}</p>
+    <p>Price : {{product.price}}</p>
+    <p>DateTime : {{product.createdAt|date('d-m-Y')}}</p>
+
+    <button onclick="addCart()">Ajouter au panier</button>
+
+        <script>
+        function addCart() {
+            fetch("/cart/add/{{product.id}}")
+                .then((response) => {
+                    //console.log(response);
+                    document.querySelector('button').disabled = true;
+                });
+        }
+        </script>
+
+        
+{% endblock %}

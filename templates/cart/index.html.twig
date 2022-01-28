@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CartController!{% endblock %}
+
+{% block body %}
+<table class="table">
+    <thead>
+        <th>Name</th><th>Quantité</th><th>Price</th>
+    </thead>
+    <tbody>
+        {% for id, quantity in cart %}
+            <tr>
+                <td>{{products[id].name}}</td>
+                <td>{{quantity}}</td>
+                <td>{{products[id].price}}€</td>
+                <td><a href="/cart/delete/{{id}}"><button>Suppression</button></a></td>
+            </tr> 
+        {% endfor %}
+    </tbody>
+</table>
+
+{{ form_start(commandForm) }}
+    {{ form_row(commandForm.email) }}
+
+    <button type="submit" class="btn btn-primary btn-block">
+        Commander
+    </button>
+{{ form_end(commandForm) }}
+{% endblock %}
+

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello!{% endblock %}
+
+{% block body %}
+    <h1>ID : {{command.id}}</h1>
+    <p>Email : {{command.email}}</p>
+    <table class="table">
+    <thead>
+        <th>Name</th><th>Price</th>
+    </thead>
+        {% for p in command.products %}
+                <tr>
+                    <td><a href="{{ path('product.show', {id : p.id}) }}">{{p.name}}</a></td>
+                    <td>{{p.price}}€</td>
+                </tr> 
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

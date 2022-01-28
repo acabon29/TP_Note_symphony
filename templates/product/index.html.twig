@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductsController!{% endblock %}
+
+{% block body %}
+<table>
+    <thead>
+        <th>Id</th><th>Name</th><th>Description</th><th>Price</th><th>Datetime</th>
+    </thead>
+    <tbody>
+        {% for p in products %}
+            <tr>
+                <td>{{p.id}}</td>
+                <td><a href="{{ path('product.show', {id : p.id}) }}">{{p.name}}</a></td>
+                <td>{{p.description|slice(0,300) ~ '... voir plus'}}<a href="{{ path('product.show', {id : p.id}) }}">voir plus</a></td>
+                <td>{{p.price}}€</td>
+                <td>{{p.createdAt|date('d-m-Y')}}</td>
+            </tr> 
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
